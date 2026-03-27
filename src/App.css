@@ -1,0 +1,24 @@
+return (
+  <div className="app">
+    <Header />
+
+    <div className="stats-grid">
+      <StatsCard label="Servers Online" value={stats.serversOnline} />
+      <StatsCard label="CPU Load" value={stats.cpuLoad} suffix="%" />
+      <StatsCard label="Power Usage" value={stats.powerUsage} suffix=" MW" />
+      <StatsCard label="Active Alerts" value={alerts.length} alert={alerts.length > 0} />
+    </div>
+
+    <Controls
+      onSimulateSpike={handleSimulateSpike}
+      onResetSystem={handleResetSystem}
+    />
+
+    <div className="main-grid">
+      <RackGrid racks={racks} />
+      <EnvironmentPanel environment={environment} />
+      <EventLog logs={logs} />
+      <AlertsPanel alerts={alerts} />
+    </div>
+  </div>
+);
